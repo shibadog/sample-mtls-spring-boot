@@ -1,0 +1,100 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "Ubuntu",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:1": {
+			"installZsh": "false",
+			"upgradePackages": "true",
+			"uid": "1000",
+			"gid": "1000",
+			"installOhMyZsh": "true",
+			"nonFreePackages": "true"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2.2.0": {},
+		"ghcr.io/devcontainers/features/git:1": {
+			"ppa": true,
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/java:1": {
+			"version": "17",
+			"jdkDistro": "librca",
+			"gradleVersion": "latest",
+			"mavenVersion": "3.6.3",
+			"antVersion": "latest"
+		},
+		"ghcr.io/shibadog/devcontainer-feature/graphviz:latest": {}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"vscjava.vscode-java-pack",
+				"vmware.vscode-boot-dev-pack",
+				"humao.rest-client",
+				"mhutchie.git-graph",
+				"yzhang.markdown-all-in-one",
+				"DavidAnson.vscode-markdownlint",
+				"streetsidesoftware.code-spell-checker",
+				"redhat.vscode-xml"
+			],
+			"settings": {
+				"java.compile.nullAnalysis.mode": "automatic",
+				"java.configuration.updateBuildConfiguration": "interactive",
+				"cSpell.words": [
+					"Anson",
+					"devcontainer",
+					"devcontainers",
+					"humao",
+					"mhutchie",
+					"micrometertracer",
+					"opentelemetry",
+					"otlp",
+					"shibadog",
+					"yzhang",
+					"zipkin",
+					"vscjava",
+					"sonarlint",
+					"hediet",
+					"drawio",
+					"librca",
+					"Idempotency",
+					"Hystrix",
+					"DPAN",
+					"conv",
+					"glog",
+					"cardinfolink",
+					"termid",
+					"storeid",
+					"openapi",
+					"springframework",
+					"servlet",
+					"mockmvc",
+					"restdocs",
+					"YCAAGR",
+					"jmeter",
+					"sdkman",
+					"Mtls"
+				]
+			}
+		}
+	},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+
+	"mounts": [
+		"source=${localEnv:USERPROFILE}/.m2,target=/home/vscode/.m2,type=bind,consistency=cached"
+	]
+}
