@@ -21,6 +21,7 @@
     <modules>
         <module>mtls-server</module>
         <module>mtls-client</module>
+        <module>mtls-test</module>
     </modules>
 
 	<dependencies>

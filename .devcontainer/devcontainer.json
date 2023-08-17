@@ -47,11 +47,15 @@
 				"yzhang.markdown-all-in-one",
 				"DavidAnson.vscode-markdownlint",
 				"streetsidesoftware.code-spell-checker",
-				"redhat.vscode-xml"
+				"redhat.vscode-xml",
+				"KarateIDE.karate-ide",
+				"KarateIDE.karate-classpath-jar",
+				"ricowilcke.karate-snippets"
 			],
 			"settings": {
 				"java.compile.nullAnalysis.mode": "automatic",
-				"java.configuration.updateBuildConfiguration": "interactive",
+				"java.configuration.updateBuildConfiguration": "automatic",
+				"karateIDE.karateCli.classpath": "src/test/java:src/test/resources:target/classes:target/test-classes:${ext:karate-ide.jar}",
 				"cSpell.words": [
 					"Anson",
 					"devcontainer",
@@ -85,7 +89,9 @@
 					"YCAAGR",
 					"jmeter",
 					"sdkman",
-					"Mtls"
+					"Mtls",
+					"classpath",
+					"ricowilcke"
 				]
 			}
 		}
