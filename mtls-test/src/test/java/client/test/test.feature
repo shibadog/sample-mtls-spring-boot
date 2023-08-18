@@ -9,3 +9,10 @@ Feature: Request it for the time being
         Then status 200
         * assert response == "test OK"
         * print response
+
+    Scenario: Check SSL Request
+        Given path '/'
+        When method get
+        Then status 200
+        * assert response == "OK"
+        * print response
