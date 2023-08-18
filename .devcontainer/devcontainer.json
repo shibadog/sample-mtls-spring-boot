@@ -7,7 +7,7 @@
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
-		"ghcr.io/devcontainers/features/common-utils:1": {
+		"ghcr.io/devcontainers/features/common-utils:2.1.1": {
 			"installZsh": "false",
 			"upgradePackages": "true",
 			"uid": "1000",
@@ -15,7 +15,7 @@
 			"installOhMyZsh": "true",
 			"nonFreePackages": "true"
 		},
-		"ghcr.io/devcontainers/features/docker-in-docker:2.2.0": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2.3.0": {},
 		"ghcr.io/devcontainers/features/git:1": {
 			"ppa": true,
 			"version": "latest"
@@ -26,8 +26,7 @@
 			"gradleVersion": "latest",
 			"mavenVersion": "3.6.3",
 			"antVersion": "latest"
-		},
-		"ghcr.io/shibadog/devcontainer-feature/graphviz:latest": {}
+		}
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -91,7 +90,8 @@
 					"sdkman",
 					"Mtls",
 					"classpath",
-					"ricowilcke"
+					"ricowilcke",
+					"graphviz"
 				]
 			}
 		}

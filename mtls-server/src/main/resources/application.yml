@@ -1,2 +1,12 @@
 server:
-  port: 8081
+  port: 9443
+  ssl:
+    enabled: true
+    key-store: classpath:${KEYSTORE:keystore.jks}
+    key-store-password: changeit
+    key-alias: localhost
+    key-password: changeit
+
+    client-auth: want
+    trust-store: classpath:${TRUSTSTORE:server-truststore.p12}
+    trust-store-password: changeit
