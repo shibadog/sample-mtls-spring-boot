@@ -7,6 +7,6 @@ server:
     key-alias: localhost
     key-password: changeit
 
-    client-auth: want
+    client-auth: need
     trust-store: classpath:${TRUSTSTORE:server-truststore.p12}
     trust-store-password: changeit
