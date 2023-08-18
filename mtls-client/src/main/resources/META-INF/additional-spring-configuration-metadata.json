@@ -1,0 +1,24 @@
+{
+    "properties": [
+        {
+            "name": "app.keystore.filepath",
+            "type": "java.lang.String",
+            "description": "A description for 'app.keystore.filepath'"
+        },
+        {
+            "name": "app.keystore.password",
+            "type": "java.lang.String",
+            "description": "A description for 'app.keystore.password'"
+        },
+        {
+            "name": "app.cacert.filepath",
+            "type": "java.lang.String",
+            "description": "A description for 'app.cacert.filepath'"
+        },
+        {
+            "name": "app.cacert.alias",
+            "type": "java.lang.String",
+            "description": "A description for 'app.cacert.alias'"
+        },        
+    ]
+}
