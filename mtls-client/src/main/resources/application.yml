@@ -6,5 +6,5 @@ app:
     filepath: classpath:client.p12
     password: changeit
   cacert:
-    filepath: classpath:rootCA.crt
-    alias: rootCA
+    filepath: classpath:serverCA.crt
+    alias: serverCA
