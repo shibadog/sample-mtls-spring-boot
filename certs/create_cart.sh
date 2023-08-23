@@ -34,3 +34,6 @@ openssl pkcs12 -export -out client.p12 -name "client" -inkey client.key -in clie
 
 # CA証明書のPEMを作成してみる
 openssl pkcs12 -in server-truststore.p12 -out ca.pem -nodes
+
+# 今度はp12をbase64したテキストにする
+base64 -w 0 client.p12 > client.p12.txt

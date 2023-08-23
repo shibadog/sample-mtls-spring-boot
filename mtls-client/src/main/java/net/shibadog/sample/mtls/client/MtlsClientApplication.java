@@ -1,6 +1,7 @@
 package net.shibadog.sample.mtls.client;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyManagementException;
@@ -12,6 +13,7 @@ import java.security.UnrecoverableKeyException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
+import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
@@ -81,7 +83,7 @@ public class MtlsClientApplication {
 
 		@Bean
 		RestTemplate restTemplate(
-				@Value("${app.keystore.filepath}") String keyStorePath,
+				@Value("${app.keystore.key}") String pkey,
 				@Value("${app.keystore.password}") String keyStorePassword,
 				@Value("${app.cacert.filepath}") String caCertPath,
 				@Value("${app.cacert.alias}") String caCertAlias
@@ -89,7 +91,7 @@ public class MtlsClientApplication {
 			Supplier<ClientHttpRequestFactory> requestFactory = () -> {			
 				try {
 					SSLContext sslContext =
-							createSslContext("TLSv1.3", keyStorePath, keyStorePassword, caCertPath, caCertAlias);
+							createSslContext("TLSv1.3", pkey, keyStorePassword, caCertPath, caCertAlias);
 
 					HttpClient httpClient = createHttpClient(sslContext);
 
@@ -104,12 +106,12 @@ public class MtlsClientApplication {
 					.build();
 		}
 
-		SSLContext createSslContext(String protocol, String keyStorePath, String keyStorePassword, String certificatePath, String alias)
+		SSLContext createSslContext(String protocol, String pkey, String keyStorePassword, String certificatePath, String alias)
 				throws NoSuchAlgorithmException, KeyStoreException, CertificateException, IOException, UnrecoverableKeyException, KeyManagementException {
 			SSLContext sslContext = SSLContext.getInstance(protocol);
 
 			// Create Key Manager
-			KeyManager[] keyManagers = createKeyManagers(keyStorePath, keyStorePassword);
+			KeyManager[] keyManagers = createKeyManagers(pkey, keyStorePassword);
 
 			// Create Trust Manager
 			TrustManager[] trustManagers = createTrustManagers(certificatePath, alias);
@@ -120,12 +122,12 @@ public class MtlsClientApplication {
 			return sslContext;
 		}
 
-		KeyManager[] createKeyManagers(String keyStorePath, String keyStorePassword)
+		KeyManager[] createKeyManagers(String pkey, String keyStorePassword)
 				throws KeyStoreException, CertificateException, IOException, NoSuchAlgorithmException, UnrecoverableKeyException {
 			KeyManager[] keyManagers = null;
 
-			if (keyStorePath != null) {
-				try (InputStream is = new BufferedInputStream(resourceLoader.getResource(keyStorePath).getInputStream())) {
+			if (pkey != null) {
+				try (InputStream is = new ByteArrayInputStream(Base64.getDecoder().decode(pkey))) {
 					// See https://docs.oracle.com/javase/jp/8/docs/technotes/guides/security/StandardNames.html#KeyStore
 					KeyStore keyStore = KeyStore.getInstance("pkcs12");
 					keyStore.load(is, keyStorePassword.toCharArray());

@@ -3,7 +3,7 @@ server:
 
 app:
   keystore:
-    filepath: classpath:client.p12
+    key: ${CLIENT_KEYSTORE}
     password: changeit
   cacert:
     filepath: classpath:rootCA.crt

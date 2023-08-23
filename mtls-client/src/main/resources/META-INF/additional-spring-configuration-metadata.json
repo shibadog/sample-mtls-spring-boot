@@ -1,9 +1,9 @@
 {
     "properties": [
         {
-            "name": "app.keystore.filepath",
+            "name": "app.keystore.key",
             "type": "java.lang.String",
-            "description": "A description for 'app.keystore.filepath'"
+            "description": "A description for 'app.keystore.key'"
         },
         {
             "name": "app.keystore.password",
